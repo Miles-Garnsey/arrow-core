@@ -61,14 +61,13 @@ afterEvaluate {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/miles-garnsey/arrow-core")
                 credentials {
-                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                    username = project.findProperty("systemProp.gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("systemProp.gpr.key") ?: System.getenv("TOKEN")
                 }
             }
         }
     }
 }
-
 task sourcesJar(type: Jar, dependsOn: classes) {
     //noinspection GroovyAccessibility //alternatively replace this with archiveClassifier.set('...')
     archiveClassifier = 'sources'
