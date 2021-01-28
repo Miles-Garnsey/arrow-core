@@ -23,7 +23,7 @@ afterEvaluate {
             mavenJava(MavenPublication) {
                 groupId = GROUP
                 artifactId = POM_ARTIFACT_ID
-                version = VERSION_NAME
+                version = "0.12.0-miles"
 
                 artifact sourcesJar
                 artifact javadocJar
