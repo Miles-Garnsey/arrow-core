@@ -14,8 +14,22 @@
  * limitations under the License.
  */
 
+apply plugin: 'com.jfrog.bintray'
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+
+bintray {
+    user = project.findProperty("systemProp.bintray.user") ?: System.getenv("USERNAME")
+    key = project.findProperty("systemProp.bintray.key") ?: System.getenv("TOKEN")
+    pkg {
+        repo = 'maven'
+        name = 'io.arrow-kt'
+        configurations = ['archives']
+        desc = 'Static version of the 0.12.0-snapshot..'
+        publish = true
+        publicDownloadNumbers = true
+    }
+}
 
 afterEvaluate {
     publishing {
